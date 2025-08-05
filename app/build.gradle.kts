@@ -1,8 +1,9 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android") // ¡Este es el plugin principal de Kotlin!
+    id("org.jetbrains.kotlin.plugin.compose") // Plugin para Compose
+    id("com.google.dagger.hilt.android") // Plugin de Hilt
+    id("kotlin-kapt") // Solo
     id("com.google.devtools.ksp")
 }
 
@@ -61,12 +62,13 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler) // KSP para Room
     implementation(libs.androidx.room.ktx)
 
     // Hilt
     implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.compiler) // solo KSP, NO kapt aquí
+
     implementation(libs.androidx.hilt.navigation.compose)
 
     // ViewModel + Compose
@@ -81,4 +83,5 @@ dependencies {
     // Coroutines (si aún no los tenés)
     implementation(libs.kotlinx.coroutines.android)
 
+    // Eliminé el kapt(libs.hilt.compiler.v2511) porque estás usando ksp para hilt-compiler
 }

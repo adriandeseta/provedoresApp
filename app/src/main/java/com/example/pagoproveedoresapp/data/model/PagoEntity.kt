@@ -3,6 +3,7 @@ package com.example.pagoproveedoresapp.data.model
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import androidx.room.Index
 
 @Entity(
     tableName = "pagos",
@@ -13,7 +14,8 @@ import androidx.room.PrimaryKey
             childColumns = ["proveedorId"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],  // coma aquí para separar los parámetros
+    indices = [Index(value = ["proveedorId"])]  // índice correcto
 )
 data class PagoEntity(
     @PrimaryKey(autoGenerate = true)
