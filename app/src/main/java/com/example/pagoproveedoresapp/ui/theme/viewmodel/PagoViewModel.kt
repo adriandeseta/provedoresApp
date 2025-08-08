@@ -49,6 +49,13 @@ class PagoViewModel @Inject constructor(
         repository.insertPago(pago)
     }
 
-    // Similar para update y delete (podemos agregar si querés)
+    fun editarProveedor(proveedor: ProveedorEntity) {
+        viewModelScope.launch {
+            repository.updateProveedor(proveedor)
+        }
+    }
 
+    fun eliminarProveedor(proveedor: ProveedorEntity) = viewModelScope.launch {
+        repository.deleteProveedor(proveedor)
+    }
 }
